@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
-     var server = new Server();
-      server.start();
+   new Server(9999).start();
+
   }
 }
 
