@@ -1,5 +1,7 @@
 package ru.netology.servlet;
 
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,9 +13,14 @@ import ru.netology.service.PostService;
 
 public class MainServlet extends HttpServlet {
 
-    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru/netology");
-    private final PostController controller= context.getBean(PostController.class);
 
+     PostController controller;
+
+    @Override
+    public void init()  {
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru/netology");
+        controller = context.getBean(PostController.class);
+    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
